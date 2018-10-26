@@ -3,11 +3,16 @@
 namespace frontend\controllers;
 
 use yii\web\Controller;
+use frontend\models\Test;
 
 class TestController extends Controller
 {
     public function actionIndex(){
-        return $this->render('index');
+        $list = Test::getNewsList();
+        //print_r($list);die;
+        return $this->render('index',[
+            'list' => $list,
+        ]);
     }
 }
 /**
