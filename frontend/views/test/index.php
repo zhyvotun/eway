@@ -7,7 +7,7 @@ foreach ($list as $item):?>
 <hr>
 <?php endforeach;
 
-/**
+/** s
  * Created by PhpStorm.
  * User: zhyvotun
  * Date: 25.10.18
