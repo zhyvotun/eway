@@ -1,0 +1,30 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: zhyvotun
+ * Date: 29.10.18
+ * Time: 15:59
+ */
+
+namespace frontend\components;
+
+use Yii;
+
+class StringHelper
+{
+
+    private $limit;
+
+    public function __construct()
+    {
+        $this->limit = Yii::$app->params['shortTextLimit'];
+    }
+
+    public function getShort($string, $limit = null)
+    {
+        if ($limit === null) {
+            $limit = $this->limit;
+        }
+        return substr($string, 0, $limit);
+    }
+}

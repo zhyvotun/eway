@@ -47,7 +47,9 @@ return [
                 '<action>'=>'site/<action>',
             ],
         ],
-
+        'stringHelper' => [
+            'class' => 'frontend\components\StringHelper',
+]
 
     ],
     'params' => $params,
