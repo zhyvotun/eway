@@ -6,6 +6,11 @@ use Yii;
 
 class Test
 {
+    /**
+     * @param integer $max
+     * @return array
+     * @throws \yii\db\Exception
+     */
     public static function getNewsList($max)
     {
         $max = intval($max);
@@ -20,6 +25,16 @@ class Test
 
 
         return $result;
+    }
+
+    /**
+     * @param integer $id
+     * @return array|false
+     * @throws \yii\db\Exception
+     */
+    public static function getItem($id){
+        $sql="SELECT * FROM news WHERE id = $id";
+        return Yii::$app->db->createCommand($sql)->queryOne();
     }
 }
 /**

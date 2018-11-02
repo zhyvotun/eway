@@ -15,7 +15,7 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
-'baseUrl' => ''
+            'baseUrl' => ''
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -43,13 +43,27 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                ''=>'site/index',
-                '<action>'=>'site/<action>',
+                'news' => 'test/index',
+                'news/<id:\d+>' => 'test/view',
+                '' => 'site/index',
+                '<action>' => 'site/<action>',
             ],
         ],
         'stringHelper' => [
             'class' => 'frontend\components\StringHelper',
-]
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            //'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'zhyvotun@gmail.com',
+                'password' => 'hqoqcavrthfosptl',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
+        ],
 
     ],
     'params' => $params,

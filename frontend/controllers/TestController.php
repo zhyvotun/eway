@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use frontend\models\Test;
 
+
 class TestController extends Controller
 {
     public function actionIndex()
@@ -16,6 +17,27 @@ class TestController extends Controller
         return $this->render('index', [
             'list' => $list,
         ]);
+    }
+
+    public function actionView($id){
+        $item = Test::getItem($id);
+        return $this->render('view', [
+            'item' =>$item
+        ]);
+    }
+
+    public function actionMail()
+    {
+        $result = Yii::$app->mailer->compose()
+            ->setFrom('zhyvotun@gmail.com')
+            ->setTo('zhyvotun@gmail.com')
+            ->setSubject('Тема сообщения')
+            ->setTextBody('Текс сообщения')
+            ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
+            ->send();
+
+        var_dump($result);
+        die;
     }
 }
 /**
